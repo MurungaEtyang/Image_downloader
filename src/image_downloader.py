@@ -44,18 +44,20 @@ def reply():
     ]
     print(random.choice(autoReply))
 
-def printShow():
-    print("1. images of Mountains")
-    print("2. images of cities")
-    print("3. images of African People")
-    print("4. images of oceans")
-    print("5. images of American People")
-    print("6. images of Russian People")
-    print("7. images of Kenyan People")
-    print("8. images of Nigerian People")
-    print("1. Select from above to search or type it here")
-    print("2. Do you want to search unlisted images from above?")
-printShow()
+prompt = [
+    "images of Mountains", 
+    "images of cities", 
+    "images of African People", 
+    "images of oceans", 
+    "images of American People", 
+    "images of Russian People", 
+    "images of Kenyan People", 
+    "images of Nigerian People", 
+    "Select from above to search or type it here", 
+    "Do you want to search unlisted images from above?"]
+for eachPrompt in prompt:
+    for eachNo in range(1, 10):
+        print(f'{eachNo}. {eachPrompt}')
 
 def backPart():
     choice = int(input("Type 1 for the first choice and type 2 for the second choice\n"))
