@@ -53,10 +53,11 @@ prompt = [
     "images of Russian People", 
     "images of Kenyan People", 
     "images of Nigerian People", 
+    "images of asian People",
     "Select from above to search or type it here", 
     "Do you want to search unlisted images from above?"]
 nextNo = 1
-for eachPrompt in Prompt:
+for eachPrompt in prompt:
     print(f'{nextNo}. {eachPrompt}')
     nextNo += 1
 
@@ -118,40 +119,50 @@ def backPart():
 
         unaccepted = ['porn','sex','fuck','nude','dick','puss','vagin','rape','rapist','ngwati','kibwenye','kinembe','xxx','nyandus']
 
-        if(unaccepted[0] in name):
-            reply()
-        elif(unaccepted[1] in name):
-            reply()
-        elif(unaccepted[2] in name):
-            reply()
-        elif(unaccepted[3] in name):
-            reply()
-        elif(unaccepted[4] in name):
-            reply()
-        elif(unaccepted[5] in name):
-            reply()
-        elif(unaccepted[6] in name):
-            reply()
-        elif(unaccepted[7] in name):
-            reply()
-        elif(unaccepted[8] in name):
-            reply()
-        elif(unaccepted[9] in name):
-            reply()
-        elif(unaccepted[10] in name):
-            reply()
-        elif(unaccepted[11] in name):
-            reply()
-        elif(unaccepted[12] in name):
-            reply()
-        elif(unaccepted[13] in name):
-            reply()
-        else:
-            limit = int(input("Enter the number of images you want to download \n --> "))
-            if(limit <= 20):
-                pi.download(name, limit=limit)
+        for word in unaccepted:
+            if(word in name):
+                reply()
             else:
-                print("Too many images to download in free account")
+                limit = int(input("Enter the number of images you want to download \n --> "))
+                if(limit <= 20):
+                    pi.download(name, limit=limit)
+                else:
+                    print("Too many images to download in free account")
+
+        # if(unaccepted[0] in name):
+        #     reply()
+        # elif(unaccepted[1] in name):
+        #     reply()
+        # elif(unaccepted[2] in name):
+        #     reply()
+        # elif(unaccepted[3] in name):
+        #     reply()
+        # elif(unaccepted[4] in name):
+        #     reply()
+        # elif(unaccepted[5] in name):
+        #     reply()
+        # elif(unaccepted[6] in name):
+        #     reply()
+        # elif(unaccepted[7] in name):
+        #     reply()
+        # elif(unaccepted[8] in name):
+        #     reply()
+        # elif(unaccepted[9] in name):
+        #     reply()
+        # elif(unaccepted[10] in name):
+        #     reply()
+        # elif(unaccepted[11] in name):
+        #     reply()
+        # elif(unaccepted[12] in name):
+        #     reply()
+        # elif(unaccepted[13] in name):
+        #     reply()
+        # else:
+        #     limit = int(input("Enter the number of images you want to download \n --> "))
+        #     if(limit <= 20):
+        #         pi.download(name, limit=limit)
+        #     else:
+        #         print("Too many images to download in free account")
     else:
         print("Wrong choice kindly, restart the program and select 1 or 2 to proceed.")
 
