@@ -3,50 +3,12 @@ from pygoogle_image import image as pi
 
 print("Download High Resolution images")
 
-file = open("autoareply.txt", 'x')
+file = open("autoareply.pkl", 'rb')
 
 def reply():
-    autoReply = [
-    "Our system has flagged a sentence containing inappropriate language.",
-    "Unwanted words were identified in the text, including sensitive and explicit content.",
-    "The algorithm has detected a sentence with potentially offensive or personal information.",
-    "We have identified a string of text that includes inappropriate language, both sexual and personal in nature.",
-    "Alert: The system has identified a sentence containing explicit or private content.",
-    "The automated filters have detected offensive words in the given sentence, including sexual and personal references.",
-    "Warning: The system has marked a sentence as containing objectionable words, including sexual or private information.",
-    "Our system's content analysis has found a sentence that includes inappropriate language, specifically sexual and personal references.",
-    "The algorithm has raised a red flag on a sentence due to the presence of offensive words, including sexually explicit or personally sensitive content.",
-    "Notification: Unwanted words, such as sexual and personal references, have been detected in the sentence by our monitoring system.",
-    "The system has detected inappropriate language in the sentence provided.",
-    "We have identified offensive words in the text, including explicit or personal content.",
-    "Alert: Objectionable words were found in the given sentence, which may include sexual or private references.",
-    "Warning: Offensive language has been detected in the provided text, including sexually explicit or sensitive information.",
-    "The automated filters have marked the sentence as containing inappropriate words, both sexual and personal in nature.",
-    "Our system's content analysis indicates the presence of offensive language, including references of a sexual or personal nature.",
-    "The algorithm has identified potentially offensive content in the sentence, involving sexually explicit or private references.",
-    "We have detected objectionable words in the provided text, which may include sexually explicit or personal content.",
-    "Caution: The system has flagged the sentence for containing inappropriate language, potentially involving sexual or personal information.",
-    "Notification: Offensive words, including sexual and personal references, have been identified in the sentence by our monitoring system.",
-    "The system has detected explicit language in the given text.",
-    "Unwanted words, such as sensitive or explicit content, have been detected and flagged in the sentence.",
-    "Alert: The algorithm has identified a sentence containing offensive or personal information.",
-    "Warning: Inappropriate language, both sexual and personal in nature, has been detected in the provided text.",
-    "The automated filters have marked the sentence as objectionable, including offensive words related to sexuality or personal matters.",
-    "Our system's content analysis indicates the presence of offensive language, specifically sexual and personal references, in the sentence.",
-    "The algorithm has raised concerns about the sentence due to the presence of offensive words, including sexually explicit or personally sensitive content.",
-    "We have detected objectionable words in the sentence, which may include references to sexual or personal topics.",
-    "Caution: The system has flagged the sentence for containing inappropriate language, potentially involving sexual or private references.",
-    "Notification: Offensive words, such as sexual and personal references, have been identified in the sentence by our monitoring system.",
-    "The system has identified explicit language in the given text.",
-    "Unwanted words, including sensitive or explicit content, have been detected and marked in the provided sentence.",
-    "Alert: The algorithm has identified a sentence containing offensive or private information.",
-    "Warning: Inappropriate language, both sexual and personal in nature, has been detected in the given text.",
-    "The automated filters have marked the sentence as objectionable, including offensive words related to sexuality or personal matters.",
-    "Our system's content analysis indicates the presence of offensive language, specifically sexual and personal"
-    ]
-    pickle.dump(autoReply, file)
-    file.close()
+    autoReply = pickle.load(file)
     print(random.choice(autoReply))
+    file.close()
 
 prompt = [
     "images of Mountains", 
@@ -126,55 +88,10 @@ def backPart():
             reply()
         else:
             limit = int(input("Enter the number of images you want to download \n --> "))
-                if(limit <= 20):
-                    pi.download(name, limit=limit)
-                else:
-                    print("Too many images to download in free account")
-
-        for word in unaccepted:
-            if(word in name):
-                reply()
+            if(limit <= 20):
+                pi.download(name, limit=limit)
             else:
-                limit = int(input("Enter the number of images you want to download \n --> "))
-                if(limit <= 20):
-                    pi.download(name, limit=limit)
-                else:
-                    print("Too many images to download in free account")
-
-        # if(unaccepted[0] in name):
-        #     reply()
-        # elif(unaccepted[1] in name):
-        #     reply()
-        # elif(unaccepted[2] in name):
-        #     reply()
-        # elif(unaccepted[3] in name):
-        #     reply()
-        # elif(unaccepted[4] in name):
-        #     reply()
-        # elif(unaccepted[5] in name):
-        #     reply()
-        # elif(unaccepted[6] in name):
-        #     reply()
-        # elif(unaccepted[7] in name):
-        #     reply()
-        # elif(unaccepted[8] in name):
-        #     reply()
-        # elif(unaccepted[9] in name):
-        #     reply()
-        # elif(unaccepted[10] in name):
-        #     reply()
-        # elif(unaccepted[11] in name):
-        #     reply()
-        # elif(unaccepted[12] in name):
-        #     reply()
-        # elif(unaccepted[13] in name):
-        #     reply()
-        # else:
-        #     limit = int(input("Enter the number of images you want to download \n --> "))
-        #     if(limit <= 20):
-        #         pi.download(name, limit=limit)
-        #     else:
-        #         print("Too many images to download in free account")
+                print("Too many images to download in free account")
     else:
         print("Wrong choice kindly, restart the program and select 1 or 2 to proceed.")
 
