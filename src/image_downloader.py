@@ -1,7 +1,9 @@
-import random
+import random, pickle
 from pygoogle_image import image as pi
 
 print("Download High Resolution images")
+
+file = open("autoareply.txt", 'x')
 
 def reply():
     autoReply = [
@@ -42,6 +44,8 @@ def reply():
     "The automated filters have marked the sentence as objectionable, including offensive words related to sexuality or personal matters.",
     "Our system's content analysis indicates the presence of offensive language, specifically sexual and personal"
     ]
+    pickle.dump(autoReply, file)
+    file.close()
     print(random.choice(autoReply))
 
 prompt = [
