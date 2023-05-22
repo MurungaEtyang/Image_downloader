@@ -55,9 +55,10 @@ prompt = [
     "images of Nigerian People", 
     "Select from above to search or type it here", 
     "Do you want to search unlisted images from above?"]
-for eachPrompt in prompt:
-    for eachNo in range(1, 10):
-        print(f'{eachNo}. {eachPrompt}')
+nextNo = 1
+for eachPrompt in Prompt:
+    print(f'{nextNo}. {eachPrompt}')
+    nextNo += 1
 
 def backPart():
     choice = int(input("Type 1 for the first choice and type 2 for the second choice\n"))
