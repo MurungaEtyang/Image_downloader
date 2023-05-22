@@ -118,6 +118,14 @@ def backPart():
         name = input("Enter the name of the person you want to search in the space below \n--> ")
 
         unaccepted = ['porn','sex','fuck','nude','dick','puss','vagin','rape','rapist','ngwati','kibwenye','kinembe','xxx','nyandus']
+        if name in unaccepted:
+            reply()
+        else:
+            limit = int(input("Enter the number of images you want to download \n --> "))
+                if(limit <= 20):
+                    pi.download(name, limit=limit)
+                else:
+                    print("Too many images to download in free account")
 
         for word in unaccepted:
             if(word in name):
