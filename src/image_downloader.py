@@ -1,6 +1,3 @@
-import pickle
-import random
-
 from pygoogle_image import image as pi
 
 banner = '''
@@ -30,7 +27,7 @@ banner = '''
 
                           <<DOWNLOAD ANY NUMBER OF HD IMAGES>>
 '''
-
+print(banner)
 try:
     while True:
         name = input("Enter the name of your search \n--> ")
