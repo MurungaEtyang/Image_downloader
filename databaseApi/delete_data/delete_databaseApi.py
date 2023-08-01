@@ -65,9 +65,12 @@ class delete_data:
 
             filtered_data = [item for item in json_data if item['product code'] != input_text and item['product name'] != input_text]
 
-            with open(delete_data.data_file_products, "w") as f:
-                json.dump(filtered_data, f, indent=4)
+            if len(filtered_data) == len(json_data):
+                QMessageBox.warning(self, "Error", f"Product '{input_text}' does not exist.")
+            else:  
+                with open(delete_data.data_file_products, "w") as f:
+                    json.dump(filtered_data, f, indent=4)
 
-            QMessageBox.information(self, "Success", f"Product '{input_text}' and its related data deleted successfully.")
+                    QMessageBox.information(self, "Success", f"Product '{input_text}' and its related data deleted successfully.")
         except Exception as e:
             print(e)   

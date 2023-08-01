@@ -1,42 +1,22 @@
 [
     {
-        "Firstname": "samson",
-        "lastname": "kamar",
-        "role": "manager",
-        "username": "baraka",
-        "password": "e10adc3949ba59abbe56e057f20f883e",
-        "salary": 10000,
-        "National ID": 52397855,
-        "Blood Type": "a+"
-    },
-    {
         "Firstname": "evans",
-        "lastname": "etyang",
-        "role": "boss",
-        "username": "murunga",
+        "lastname": "murunga",
+        "role": "etyang",
+        "username": "admin",
         "password": "e10adc3949ba59abbe56e057f20f883e",
-        "salary": 50000000,
+        "salary": 400000,
         "National ID": 35734677,
         "Blood Type": "a+"
     },
     {
-        "Firstname": "sharon",
-        "lastname": "kiogolla",
-        "role": "admin",
-        "username": "admin",
+        "Firstname": "elijah",
+        "lastname": "mutune",
+        "role": "waiter",
+        "username": "elijah",
         "password": "e10adc3949ba59abbe56e057f20f883e",
-        "salary": 500000,
-        "National ID": 4013068,
-        "Blood Type": "o"
-    },
-    {
-        "Firstname": "323",
-        "lastname": "22",
-        "role": "boss",
-        "username": "222",
-        "password": "e165421110ba03099a1c0393373c5b43",
-        "salary": 33,
-        "National ID": 33,
-        "Blood Type": "33"
+        "salary": 20000,
+        "National ID": 4105875655,
+        "Blood Type": "b"
     }
 ]
