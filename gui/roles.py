@@ -3,7 +3,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 import databaseApi.save_data.save_databaseapi as roles
 class show_Dataset(QDialog):
-    roles_path = "Database/role.json"
+    roles_path = "../Database/role.json"
     def __init__(self , parent=None):
         super(show_Dataset, self).__init__(parent)
         self.setModal(True)

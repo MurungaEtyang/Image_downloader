@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
-import hashlib, time_day, pos_sale, dashboard
+import hashlib
+from gui import time_day, dashboard, pos_sale
 import time
 import json
 import sys
@@ -11,8 +12,8 @@ class window(QWidget):
         super(window, self).__init__(parent)
         self.resize(500, 400)
         self.setWindowTitle("Login")
-        # self.setFixedWidth(600)
         self.adjustSize()
+
         # label 1 (header)
         self.label = QLabel(self)
         self.label.setText("Welcome to Login page")
@@ -33,6 +34,7 @@ class window(QWidget):
         font2.setCapitalization(True)
         self.label2.setFont(font2)
         self.label2.move(120, 60)
+
         # line 1
         self.username = QLineEdit(self)
         self.username.setFont(font)
@@ -51,7 +53,6 @@ class window(QWidget):
         font3.setCapitalization(True)
         self.label3.setFont(font2)
         self.label3.move(120, 160)
-        self.username.setStyleSheet("Background-color: white")
 
         # line 2
         self.password = QLineEdit(self)
@@ -81,41 +82,40 @@ class window(QWidget):
         font.setCapitalization(True)
         font.setBold(True)
         font.setPointSize(20)
+
+        # Label for displaying current day
         self.label1 = QLabel(self)
         self.label1.setText(time_day.a)
         self.label1.setStyleSheet("background-color: white; color:black")
         self.label1.setFont(font)
         self.label1.move(10, 350)
 
+        # Label for displaying current time
         self.label1 = QLabel(self)
         self.label1.setText(time.ctime())
         self.label1.setStyleSheet("background-color: white; color:black;")
         self.label1.setFont(font)
         self.label1.move(10, 400)
 
-        # A--------------Z 
-        # A
-
     def alphabets(self, letters, target_input):
         lettersfont4 = QFont()
         lettersfont4.setBold(True)
         lettersfont4.setCapitalization(True)
         lettersfont4.setPixelSize(16)
+
+        # Create a button for each alphabet letter
         A = QPushButton(self)
         A.setFixedWidth(100)
         A.setFixedHeight(60)
-        A.setStyleSheet(
-            "background-color: rgb(236,133,253)"
-        )
+        A.setStyleSheet("background-color: rgb(236,133,253)")
         A.setFont(lettersfont4)
         A.setText(letters)
-        A.clicked.connect(lambda checked, value=letters, target=target_input: self.handle_button_click(value,
-                                                                                                       target))  # Connect button to a function
+        A.clicked.connect(lambda checked, value=letters, target=target_input: self.handle_button_click(value, target))
 
         return A
 
     def handle_button_click(self, letter, target):
-
+        # Handle button click event and append the letter to the target input field
         if target == self.username:
             self.username.setText(self.username.text() + letter)
         elif target == self.password:
@@ -123,40 +123,52 @@ class window(QWidget):
 
     def create_buttons(self):
         l = dict(a=600, b=700, c=800, d=900, e=1000, f=1100, g=1200)
+
+        # Create buttons for alphabets A-G
         for k, v in l.items():
             self.alphabets(k, self.username).move(v, 20)
 
         l = dict(h=600, i=700, j=800, k=900, l=1000, m=1100, n=1200)
+
+        # Create buttons for alphabets H-N
         for k, v in l.items():
             self.alphabets(k, self.username).move(v, 80)
 
         l = dict(o=600, p=700, q=800, r=900, s=1000, t=1100, u=1200)
+
+        # Create buttons for alphabets O-U
         for k, v in l.items():
             self.alphabets(k, self.username).move(v, 140)
 
         l = dict(v=600, w=700, x=800, y=900, z=1000)
+
+        # Create buttons for alphabets V-Z
         for k, v in l.items():
             self.alphabets(k, self.username).move(v, 200)
 
         n = {'1': 800, '2': 900, '3': 1000}
+
+        # Create buttons for numbers 1-3
         for k, v in n.items():
             self.alphabets(k, self.password).move(v, 300)
 
         n = {'4': 800, '5': 900, '6': 1000}
+
+        # Create buttons for numbers 4-6
         for k, v in n.items():
             self.alphabets(k, self.password).move(v, 360)
 
         n = {'7': 800, '8': 900, '9': 1000}
+
+        # Create buttons for numbers 7-9
         for k, v in n.items():
             self.alphabets(k, self.password).move(v, 420)
 
         n = {'0': 900}
+
+        # Create button for number 0
         for k, v in n.items():
             self.alphabets(k, self.password).move(v, 480)
-
-        # n = {'delete': 800, 'clear': 1000}
-        # for k, v in n.items():
-        #     self.alphabets(k, ).move(v, 480)
 
     def self_login(self):
         username = self.username.text()
@@ -171,7 +183,6 @@ class window(QWidget):
             if username in user_name and password in passwd:
                 if username == "admin":
                     self.open_dashboard(username)
-
                 else:
                     self.pos_dashboard(username)
             else:
@@ -179,6 +190,7 @@ class window(QWidget):
                 messd1.warning(None, "warning", "Wrong username or password")
 
     def open_dashboard(self, username1):
+        # Open the dashboard window for admin user
         self.dashboard = dashboard.show_Dataset()
         self.dashboard.showMaximized()
         self.dashboard.set_username(str(username1))
@@ -186,6 +198,7 @@ class window(QWidget):
         self.close()
 
     def pos_dashboard(self, username1):
+        # Open the POS dashboard window for non-admin users
         self.pos_sale = pos_sale.show_Dataset()
         self.pos_sale.showFullScreen()
         self.pos_sale.set_username(str(username1))

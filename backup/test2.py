@@ -4,8 +4,8 @@ from PyQt5.QtGui import *
 import hashlib
 import json
 import sys
-import subprocess
-import dashboard
+from gui import dashboard
+
 
 class Window(QWidget):
     def __init__(self, parent=None):

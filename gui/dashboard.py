@@ -1,22 +1,22 @@
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-import addproducts, addusers, roles, display_products, display_roles, display_users, main, pos_sale
+from gui import addproducts, addusers, roles, display_products, display_roles, display_users, pos_sale
+import main
 
 class show_Dataset(QWidget):
-    def __init__(self , parent=None):
+    def __init__(self, parent=None):
         super(show_Dataset, self).__init__(parent)
         self.resize(500, 600)
         self.setWindowTitle("administrative dashboard")
         self.isFullScreen()
         self.adjustSize()
-        
-        
-        
+
         # fonts
         font = QFont()
         font.setBold(True)
         font.setCapitalization(True)
 
+        # Username label
         self.username_label = QLabel(self)
         self.username_label.setFont(font)
         self.username_label.move(1000, 10)
@@ -24,38 +24,42 @@ class show_Dataset(QWidget):
         self.username_label.setFixedWidth(150)
         self.username_label.setStyleSheet("background-color: #FFFFFF")
 
-        # shut down
+        # Close button
         self.clos = QPushButton(self)
         self.clos.setText("close")
-        self.clos.move(1200,600)
+        self.clos.move(1200, 600)
         self.clos.setFont(font)
         self.clos.setFixedHeight(40)
         self.clos.setFixedWidth(100)
         self.clos.setStyleSheet("background-color: red; border: 4px solid red; border-radius: 10px")
-        self.clos.clicked.connect(self.close) 
+        self.clos.clicked.connect(self.close)
 
+        # Logout button
         self.logout = QPushButton(self)
         self.logout.setText("logout")
-        self.logout.move(1200,10) 
+        self.logout.move(1200, 10)
         self.logout.setFont(font)
         self.logout.setFixedHeight(40)
         self.logout.setFixedWidth(150)
-        self.logout.clicked.connect(self.open_login)  
+        self.logout.clicked.connect(self.open_login)
 
+        # POS button
         self.pos1 = QPushButton(self)
         self.pos1.setText("pos")
-        self.pos1.move(30,10) 
+        self.pos1.move(30, 10)
         self.pos1.setFont(font)
         self.pos1.setFixedHeight(40)
         self.pos1.setFixedWidth(100)
-        self.pos1.clicked.connect(self.pos)   
-        # header
+        self.pos1.clicked.connect(self.pos)
+
+        # Header label
         self.label = QLabel(self)
         self.label.setText("Welcome to administrative dashboard")
-        self.label.move(500,20)
+        self.label.move(500, 20)
         self.label.setFont(font)
         self.label.setFixedHeight(70)
-        # Roles
+
+        # ADD ROLES button
         self.button0 = QPushButton(self)
         self.button0.setFont(font)
         self.button0.setFixedWidth(200)
@@ -65,8 +69,7 @@ class show_Dataset(QWidget):
         self.button0.setStyleSheet("background-color: rgb(100,149,237)")
         self.button0.clicked.connect(self.launch_addrole_file)
 
-
-        # USERS
+        # ADD USERS button
         self.button1 = QPushButton(self)
         self.button1.setFont(font)
         self.button1.setFixedWidth(200)
@@ -76,8 +79,7 @@ class show_Dataset(QWidget):
         self.button1.setStyleSheet("background-color: rgb(100,149,237)")
         self.button1.clicked.connect(self.launch_adduser_file)
 
-
-        # button2
+        # Add Products button
         self.button2 = QPushButton(self)
         self.button2.setFont(font)
         self.button2.setFixedWidth(200)
@@ -87,8 +89,7 @@ class show_Dataset(QWidget):
         self.button2.setStyleSheet("background-color: rgb(100,149,237)")
         self.button2.clicked.connect(self.launch_addproducts_file)
 
-
-        # button3
+        # Products button
         self.button3 = QPushButton(self)
         self.button3.setFont(font)
         self.button3.setFixedWidth(200)
@@ -98,7 +99,7 @@ class show_Dataset(QWidget):
         self.button3.setStyleSheet("background-color: rgb(100,149,237)")
         self.button3.clicked.connect(self.launch_products_file)
 
-        # button4
+        # Users button
         self.button4 = QPushButton(self)
         self.button4.setFont(font)
         self.button4.setFixedWidth(200)
@@ -108,7 +109,7 @@ class show_Dataset(QWidget):
         self.button4.setStyleSheet("background-color: rgb(100,149,237)")
         self.button4.clicked.connect(self.launch_users_file)
 
-        # button5
+        # Roles button
         self.button5 = QPushButton(self)
         self.button5.setFont(font)
         self.button5.setFixedWidth(200)
@@ -119,6 +120,7 @@ class show_Dataset(QWidget):
         self.button5.clicked.connect(self.launch_role_file)
 
     def open_login(self):
+        # Open login window
         self.login = main.window()
         self.login.create_buttons()
         self.login.day_time()
@@ -127,9 +129,11 @@ class show_Dataset(QWidget):
         self.close()
 
     def set_username(self, username):
+        # Set username label
         self.username_label.setText("Administrator: " + username)
 
     def pos(self, user):
+        # Open POS window
         self.pos1 = pos_sale.show_Dataset()
         self.pos1.showFullScreen()
         # self.pos1.set_username(self.set_username(user))
@@ -137,31 +141,31 @@ class show_Dataset(QWidget):
         self.close()
 
     def launch_addrole_file(self):
+        # Open add roles window
         self.roles = roles.show_Dataset()
         self.roles.show()
 
     def launch_adduser_file(self):
+        # Open add users window
         self.addusers = addusers.show_Dataset()
         self.addusers.show()
 
     def launch_addproducts_file(self):
+        # Open add products window
         self.addproducts = addproducts.show_Dataset()
         self.addproducts.show()
 
     def launch_products_file(self):
+        # Open display products window
         self.deleteproducts = display_products.ShowDataset()
         self.deleteproducts.show()
 
     def launch_users_file(self):
+        # Open display users window
         self.deleteusers = display_users.show_Dataset()
         self.deleteusers.show()
 
     def launch_role_file(self):
+        # Open display roles window
         self.deleterole = display_roles.show_Dataset()
         self.deleterole.show()
-
-
-
-    
- 
-        
